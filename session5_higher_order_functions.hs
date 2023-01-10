@@ -67,7 +67,7 @@ triplemap = map (map map)
 
 {-
 Here is an implementation of filter using foldr.
-For each element in the list, we checks the predicate p.
+For each element in the list, we check the predicate p.
 If the predicate is true, we cons the element to the accumulator.
 Otherwise, we simply return the accumulator.
 Note that the accumulator starts as being the empty list [].
