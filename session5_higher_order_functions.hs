@@ -6,8 +6,8 @@ positions str = map (\c -> fromEnum c - 96) str
 
 
 {-
-The 0 in foldr f 0 xs is the initial accumulator value. 
-When foldr is applied to a list, it will apply the function f to the initial accumulator value and the first element of the list, then it will take the result of this operation and apply f to it and the second element of the list, and so on until it reaches the end of the list. 
+The 0 in foldr f 0 xs is the initial accumulator value.
+When foldr is applied to a list, it will apply the function f to the initial accumulator value and the first element of the list, then it will take the result of this operation and apply f to it and the second element of the list, and so on until it reaches the end of the list.
 The final result is the accumulation of all of these applications of f.
 
 As an example, if we replace 0 with 10 and call sumsq on 4, the result will be 40 instead of 10.
@@ -26,13 +26,13 @@ sumrows xs = map sum xs
 
 
 -- In this exercise, we can simply copy in the factorial defition, then use foldr to apply 1 / k! to each number from 0 to n.
-approx n = foldr (\x y -> (1 / fact x) + y) 0 [0 .. n]
+approx n = foldr (\x acc -> (1 / fact x) + acc) 0 [0 .. n]
     where
         fact k = product [1 .. k]
 
 
 {-
-fingo adds each element in ys to the front of xs, starting with the last element of ys and working towards the front. 
+fingo adds each element in ys to the front of xs, starting with the last element of ys and working towards the front.
 The final result will be a new list that is the concatenation of xs and ys.
 -}
 fingo :: [a] -> [a] -> [a]
@@ -67,7 +67,7 @@ triplemap = map (map map)
 
 {-
 Here is an implementation of filter using foldr.
-For each element in the list, we checks the predicate p. 
+For each element in the list, we checks the predicate p.
 If the predicate is true, we cons the element to the accumulator.
 Otherwise, we simply return the accumulator.
 Note that the accumulator starts as being the empty list [].
@@ -84,7 +84,7 @@ remove first second = foldr appendUnique [] second
     where
         appendUnique char resultStr
             -- if char is in the first input string, return the accumulated result string
-            | char `elem` first = resultStr 
+            | char `elem` first = resultStr
             -- otherwise, it's unique, so we append the character to the accumulated result string
             | otherwise         = char : resultStr
 
