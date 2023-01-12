@@ -29,8 +29,6 @@ sumrows xs = map sum xs
 approx n = foldr (\x acc -> (1 / fact x) + acc) 0 [0 .. n]
     where
         fact k = product [1 .. k]
-
-
 {-
 fingo adds each element in ys to the front of xs, starting with the last element of ys and working towards the front.
 The final result will be a new list that is the concatenation of xs and ys.
@@ -89,8 +87,12 @@ remove first second = foldr appendUnique [] second
             | otherwise         = char : resultStr
 
 
--- Here is a function that finds the minimum value in a list using foldr.
--- The initial accumulator value is just the head of the list, which is then reassigned if a smaller value is found
+-- Here is a function that finds the seconds smallest value in a list using foldr and list comprehension
+-- The initial accumulator value is just the maximum element of the list
 min2 [] = 0
 min2 [a] = a
-min2 (x:xs) = foldr (\x min -> if x < min then x else min) x xs
+min2 xs
+    | length ys >= 2 = head ys
+    | otherwise      = foldr (\x min -> if x < min && x > minimum xs then x else min) (maximum xs) xs
+    where
+        ys = [x | x <- xs, x == minimum xs]
