@@ -87,7 +87,7 @@ remove first second = foldr appendUnique [] second
             | otherwise         = char : resultStr
 
 
--- Here is a function that finds the seconds smallest value in a list using foldr and list comprehension
+-- Here is a function that finds the second smallest value in a list using foldr and list comprehension
 -- The initial accumulator value is just the maximum element of the list
 min2 [] = 0
 min2 [a] = a
